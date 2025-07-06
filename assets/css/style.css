@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;1,600;1,700&amp;display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;1,600;1,700&display=swap");
 * {
   font-family: "Poppins", sans-serif;
   margin: 0;
@@ -70,12 +70,29 @@ header.shadow {
   z-index: 10000;
   display: flex;
   column-gap: 0.8rem;
+  align-items: center;
+  position: relative;
 }
 .header-icon .bx {
   color: var(--bg-color);
 }
 .header-icon .bx:hover {
   color: var(--main-color);
+}
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: 60px;
+  background: var(--main-color);
+  color: var(--bg-color);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
 }
 #menu-icon {
   color: var(--bg-color);
@@ -138,6 +155,9 @@ header.shadow {
   background: var(--main-color);
   color: var(--bg-color);
   font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 .btn:hover {
   background: #8a6f4d;
@@ -310,6 +330,298 @@ header.shadow {
   text-align: center;
   background: var(--second-color);
 }
+
+/* Cart Modal Styles */
+.cart-modal, .checkout-modal, .success-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.cart-modal.active, .checkout-modal.active, .success-modal.active {
+  display: flex;
+}
+
+.cart-content, .checkout-content, .success-content {
+  background: var(--bg-color);
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.checkout-content {
+  max-width: 600px;
+}
+
+.cart-header, .checkout-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--second-color);
+  padding-bottom: 1rem;
+}
+
+.cart-header h2, .checkout-header h2 {
+  color: var(--main-color);
+  font-size: 1.5rem;
+}
+
+.cart-header i, .checkout-header i {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.cart-header i:hover, .checkout-header i:hover {
+  color: var(--main-color);
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--second-color);
+}
+
+.cart-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.cart-item-info {
+  flex: 1;
+}
+
+.cart-item-info h4 {
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.cart-item-info p {
+  color: var(--main-color);
+  font-weight: 600;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.quantity-btn {
+  background: var(--main-color);
+  color: var(--bg-color);
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity-btn:hover {
+  background: #8a6f4d;
+}
+
+.quantity {
+  font-weight: 600;
+  min-width: 30px;
+  text-align: center;
+}
+
+.remove-item {
+  background: #dc3545;
+  color: var(--bg-color);
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.remove-item:hover {
+  background: #c82333;
+}
+
+.cart-total {
+  text-align: center;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: var(--second-color);
+  border-radius: 0.5rem;
+}
+
+.cart-total h3 {
+  color: var(--main-color);
+  font-size: 1.3rem;
+}
+
+.cart-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.clear-cart {
+  background: #dc3545;
+}
+
+.clear-cart:hover {
+  background: #c82333;
+}
+
+.checkout-btn {
+  background: var(--main-color);
+}
+
+.checkout-btn:hover {
+  background: #8a6f4d;
+}
+
+/* Checkout Form Styles */
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.form-group input, .form-group textarea {
+  padding: 0.8rem;
+  border: 2px solid var(--second-color);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+  outline: none;
+  border-color: var(--main-color);
+}
+
+.payment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem;
+  border: 2px solid var(--second-color);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.radio-option:hover {
+  border-color: var(--main-color);
+  background: rgba(188, 150, 103, 0.1);
+}
+
+.radio-option input[type="radio"] {
+  margin: 0;
+}
+
+.order-summary {
+  background: var(--second-color);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+}
+
+.order-summary h3 {
+  color: var(--main-color);
+  margin-bottom: 1rem;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.order-total {
+  border-top: 2px solid var(--main-color);
+  padding-top: 0.5rem;
+  margin-top: 1rem;
+  text-align: right;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.cancel-btn {
+  background: #6c757d;
+}
+
+.cancel-btn:hover {
+  background: #5a6268;
+}
+
+.confirm-btn {
+  background: var(--main-color);
+}
+
+.confirm-btn:hover {
+  background: #8a6f4d;
+}
+
+/* Success Modal Styles */
+.success-content {
+  text-align: center;
+  max-width: 400px;
+}
+
+.success-icon {
+  font-size: 4rem;
+  color: #28a745;
+  margin-bottom: 1rem;
+}
+
+.success-content h2 {
+  color: var(--main-color);
+  margin-bottom: 1rem;
+}
+
+.success-content p {
+  margin-bottom: 2rem;
+  color: var(--text-color);
+}
+
 @media (max-width: 1058px) {
   header {
     padding: 16px 60px;
@@ -363,6 +675,15 @@ header.shadow {
   }
   .about {
     align-items: center;
+  }
+  
+  .cart-content, .checkout-content {
+    width: 95%;
+    padding: 1.5rem;
+  }
+  
+  .cart-actions, .form-actions {
+    flex-direction: column;
   }
 }
 @media (max-width: 360px) {
