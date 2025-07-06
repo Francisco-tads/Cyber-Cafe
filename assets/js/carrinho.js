@@ -157,37 +157,74 @@ function updateOrderSummary() {
     orderTotalElement.textContent = total.toFixed(2).replace('.', ',');
 }
 
+// Generate WhatsApp message
+function generateWhatsAppMessage(customerData, paymentMethod) {
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const paymentText = paymentMethod === 'pix' ? 'PIX (11991298838)' : 'Dinheiro';
+    
+    let message = `🍕 *NOVO PEDIDO - CYBER CAFÉ* 🍕\n\n`;
+    message += `👤 *Cliente:* ${customerData.name}\n`;
+    message += `📍 *Endereço:* ${customerData.address}\n`;
+    message += `📞 *Telefone:* ${customerData.phone}\n`;
+    message += `💳 *Pagamento:* ${paymentText}\n\n`;
+    message += `📋 *ITENS DO PEDIDO:*\n`;
+    message += `━━━━━━━━━━━━━━━━━━━━\n`;
+    
+    cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        message += `• ${item.name}\n`;
+        message += `  Qtd: ${item.quantity}x | Valor: R$ ${itemTotal.toFixed(2).replace('.', ',')}\n\n`;
+    });
+    
+    message += `━━━━━━━━━━━━━━━━━━━━\n`;
+    message += `💰 *TOTAL: R$ ${total.toFixed(2).replace('.', ',')}*\n\n`;
+    message += `⏰ Pedido realizado em: ${new Date().toLocaleString('pt-BR')}\n\n`;
+    message += `Obrigado pela preferência! ☕`;
+    
+    return message;
+}
+
+// Send order to WhatsApp
+function sendToWhatsApp(customerData, paymentMethod) {
+    const whatsappNumber = '5511991298838';
+    const message = generateWhatsAppMessage(customerData, paymentMethod);
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    // Open WhatsApp in a new tab
+    window.open(whatsappUrl, '_blank');
+}
+
 // Handle form submission
 document.getElementById('checkout-form').addEventListener('submit', function(e) {
     e.preventDefault();
     
     const formData = new FormData(this);
-    const customerName = formData.get('customer-name');
-    const customerAddress = formData.get('customer-address');
-    const customerPhone = formData.get('customer-phone');
+    const customerData = {
+        name: formData.get('customer-name'),
+        address: formData.get('customer-address'),
+        phone: formData.get('customer-phone')
+    };
     const paymentMethod = formData.get('payment-method');
     
-    // Here you would typically send the order to a server
-    // For now, we'll just show a confirmation
+    // Validate required fields
+    if (!customerData.name || !customerData.address || !customerData.phone) {
+        alert('Por favor, preencha todos os campos obrigatórios.');
+        return;
+    }
     
-    console.log('Pedido realizado:', {
-        customer: {
-            name: customerName,
-            address: customerAddress,
-            phone: customerPhone
-        },
-        paymentMethod: paymentMethod,
-        items: cart,
-        total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)
-    });
+    // Send order to WhatsApp
+    sendToWhatsApp(customerData, paymentMethod);
     
-    // Show confirmation
-    document.getElementById('checkout-section').style.display = 'none';
-    document.getElementById('confirmation-section').style.display = 'block';
-    
-    // Clear cart after successful order
-    cart = [];
-    saveCart();
+    // Show confirmation after a short delay
+    setTimeout(() => {
+        document.getElementById('checkout-section').style.display = 'none';
+        document.getElementById('confirmation-section').style.display = 'block';
+        
+        // Clear cart after successful order
+        cart = [];
+        saveCart();
+    }, 1000);
 });
 
 // Save cart to localStorage
