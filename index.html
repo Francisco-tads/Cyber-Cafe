@@ -89,7 +89,7 @@
                 <h3>PURO AMERICANO</h3>
                 <div class="content">
                     <span>R$ 26,99</span>
-                    <a href="#">ADICIONAR AO CARRINHO</a>
+                    <a href="#" onclick="addToCartAndOpen('PURO AMERICANO', 26.99, 'assets/img/p1.png')">ADICIONAR AO CARRINHO</a>
                 </div>
             </div>
             <div class="box">
@@ -97,7 +97,7 @@
                 <h3>PURO AMERICANO</h3>
                 <div class="content">
                     <span>R$ 23,49</span>
-                    <a href="#">ADICIONAR AO CARRINHO</a>
+                    <a href="#" onclick="addToCartAndOpen('PURO AMERICANO', 23.49, 'assets/img/p2.png')">ADICIONAR AO CARRINHO</a>
                 </div>
             </div>
             <div class="box">
@@ -105,7 +105,7 @@
                 <h3>PURO AMERICANO</h3>
                 <div class="content">
                     <span>R$ 23,49</span>
-                    <a href="#">ADICIONAR AO CARRINHO</a>
+                    <a href="#" onclick="addToCartAndOpen('PURO AMERICANO', 23.49, 'assets/img/p3.png')">ADICIONAR AO CARRINHO</a>
                 </div>
             </div>
             <div class="box">
@@ -113,7 +113,7 @@
                 <h3>PURO AMERICANO</h3>
                 <div class="content">
                     <span>R$ 26,99</span>
-                    <a href="#">ADICIONAR AO CARRINHO</a>
+                    <a href="#" onclick="addToCartAndOpen('PURO AMERICANO', 26.99, 'assets/img/p4.png')">ADICIONAR AO CARRINHO</a>
                 </div>
             </div>
             <div class="box">
@@ -121,7 +121,7 @@
                 <h3>PURO AMERICANO</h3>
                 <div class="content">
                     <span>R$ 26,99</span>
-                    <a href="#">ADICIONAR AO CARRINHO</a>
+                    <a href="#" onclick="addToCartAndOpen('PURO AMERICANO', 26.99, 'assets/img/p5.png')">ADICIONAR AO CARRINHO</a>
                 </div>
             </div>
             <div class="box">
@@ -129,7 +129,7 @@
                 <h3>PURO AMERICANO</h3>
                 <div class="content">
                     <span>R$ 26,99</span>
-                    <a href="#">ADICIONAR AO CARRINHO</a>
+                    <a href="#" onclick="addToCartAndOpen('PURO AMERICANO', 26.99, 'assets/img/p6.png')">ADICIONAR AO CARRINHO</a>
                 </div>
             </div>
         </div>
@@ -224,9 +224,14 @@
         <p>&#169; CarpoolVenom Todos os direitos reservados</p>
     </div>
 
-
     <script type="text/javascript" src="assets/js/main.js"></script>
+    <script>
+        // Function to add product to cart and open cart page
+        function addToCartAndOpen(productName, price, image) {
+            const cartUrl = `carrinho.html?product=${encodeURIComponent(productName)}&price=${price}&image=${encodeURIComponent(image)}`;
+            window.open(cartUrl, '_blank');
+        }
+    </script>
 </body>
-
 
 </html>
