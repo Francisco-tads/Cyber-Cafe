@@ -35,8 +35,7 @@
         </ul>
         <!--Icon-->
         <div class="header-icon">
-            <i class='bx bx-cart-alt' id="cart-icon"></i>
-            <span class="cart-count" id="cart-count">0</span>
+            <i class='bx bx-cart-alt'></i>
             <i class='bx bx-search' id="search-icon"></i>
         </div>
         <!--Search Box-->
@@ -44,85 +43,6 @@
             <input type="search" name="" id="" placeholder="Procure aqui...">
         </div>
     </header>
-
-    <!-- Cart Modal -->
-    <div class="cart-modal" id="cart-modal">
-        <div class="cart-content">
-            <div class="cart-header">
-                <h2>Carrinho de Compras</h2>
-                <i class='bx bx-x' id="close-cart"></i>
-            </div>
-            <div class="cart-items" id="cart-items">
-                <!-- Cart items will be added here dynamically -->
-            </div>
-            <div class="cart-total">
-                <h3>Total: R$ <span id="cart-total">0,00</span></h3>
-            </div>
-            <div class="cart-actions">
-                <button class="btn clear-cart" id="clear-cart">Limpar Carrinho</button>
-                <button class="btn checkout-btn" id="checkout-btn">Finalizar Compra</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Checkout Modal -->
-    <div class="checkout-modal" id="checkout-modal">
-        <div class="checkout-content">
-            <div class="checkout-header">
-                <h2>Finalizar Compra</h2>
-                <i class='bx bx-x' id="close-checkout"></i>
-            </div>
-            <form class="checkout-form" id="checkout-form">
-                <div class="form-group">
-                    <label for="customer-name">Nome Completo:</label>
-                    <input type="text" id="customer-name" name="customerName" required>
-                </div>
-                <div class="form-group">
-                    <label for="customer-address">Endereço:</label>
-                    <textarea id="customer-address" name="customerAddress" rows="3" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="customer-phone">Telefone:</label>
-                    <input type="tel" id="customer-phone" name="customerPhone" required>
-                </div>
-                <div class="form-group">
-                    <label>Forma de Pagamento:</label>
-                    <div class="payment-options">
-                        <label class="radio-option">
-                            <input type="radio" name="paymentMethod" value="pix" required>
-                            <span>PIX - 11991298838</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="paymentMethod" value="dinheiro" required>
-                            <span>Dinheiro</span>
-                        </label>
-                    </div>
-                </div>
-                <div class="order-summary">
-                    <h3>Resumo do Pedido:</h3>
-                    <div id="order-items"></div>
-                    <div class="order-total">
-                        <strong>Total: R$ <span id="order-total">0,00</span></strong>
-                    </div>
-                </div>
-                <div class="form-actions">
-                    <button type="button" class="btn cancel-btn" id="cancel-checkout">Cancelar</button>
-                    <button type="submit" class="btn confirm-btn">Confirmar Pedido</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Success Modal -->
-    <div class="success-modal" id="success-modal">
-        <div class="success-content">
-            <i class='bx bx-check-circle success-icon'></i>
-            <h2>Pedido Confirmado!</h2>
-            <p>Seu pedido foi realizado com sucesso. Entraremos em contato em breve.</p>
-            <button class="btn" id="close-success">Fechar</button>
-        </div>
-    </div>
-
     <!--Home-->
     <section class="home" id="home">
         <div class="home-text">
@@ -169,7 +89,7 @@
                 <h3>PURO AMERICANO</h3>
                 <div class="content">
                     <span>R$ 26,99</span>
-                    <a href="#" class="add-to-cart" data-name="PURO AMERICANO" data-price="26.99" data-image="assets/img/p1.png">ADICIONAR AO CARRINHO</a>
+                    <a href="#">ADICIONAR AO CARRINHO</a>
                 </div>
             </div>
             <div class="box">
@@ -177,7 +97,7 @@
                 <h3>PURO AMERICANO</h3>
                 <div class="content">
                     <span>R$ 23,49</span>
-                    <a href="#" class="add-to-cart" data-name="PURO AMERICANO" data-price="23.49" data-image="assets/img/p2.png">ADICIONAR AO CARRINHO</a>
+                    <a href="#">ADICIONAR AO CARRINHO</a>
                 </div>
             </div>
             <div class="box">
@@ -185,7 +105,7 @@
                 <h3>PURO AMERICANO</h3>
                 <div class="content">
                     <span>R$ 23,49</span>
-                    <a href="#" class="add-to-cart" data-name="PURO AMERICANO" data-price="23.49" data-image="assets/img/p3.png">ADICIONAR AO CARRINHO</a>
+                    <a href="#">ADICIONAR AO CARRINHO</a>
                 </div>
             </div>
             <div class="box">
@@ -193,7 +113,7 @@
                 <h3>PURO AMERICANO</h3>
                 <div class="content">
                     <span>R$ 26,99</span>
-                    <a href="#" class="add-to-cart" data-name="PURO AMERICANO" data-price="26.99" data-image="assets/img/p4.png">ADICIONAR AO CARRINHO</a>
+                    <a href="#">ADICIONAR AO CARRINHO</a>
                 </div>
             </div>
             <div class="box">
@@ -201,7 +121,7 @@
                 <h3>PURO AMERICANO</h3>
                 <div class="content">
                     <span>R$ 26,99</span>
-                    <a href="#" class="add-to-cart" data-name="PURO AMERICANO" data-price="26.99" data-image="assets/img/p5.png">ADICIONAR AO CARRINHO</a>
+                    <a href="#">ADICIONAR AO CARRINHO</a>
                 </div>
             </div>
             <div class="box">
@@ -209,7 +129,7 @@
                 <h3>PURO AMERICANO</h3>
                 <div class="content">
                     <span>R$ 26,99</span>
-                    <a href="#" class="add-to-cart" data-name="PURO AMERICANO" data-price="26.99" data-image="assets/img/p6.png">ADICIONAR AO CARRINHO</a>
+                    <a href="#">ADICIONAR AO CARRINHO</a>
                 </div>
             </div>
             <div class="box">
@@ -217,7 +137,7 @@
                 <h3>ESPRESSO CREMOSO</h3>
                 <div class="content">
                     <span>R$ 18,99</span>
-                    <a href="#" class="add-to-cart" data-name="ESPRESSO CREMOSO" data-price="18.99" data-image="assets/img/image.png">ADICIONAR AO CARRINHO</a>
+                    <a href="#">ADICIONAR AO CARRINHO</a>
                 </div>
             </div>
             <div class="box">
@@ -225,7 +145,7 @@
                 <h3>CAFÉ PREMIUM</h3>
                 <div class="content">
                     <span>R$ 32,99</span>
-                    <a href="#" class="add-to-cart" data-name="CAFÉ PREMIUM" data-price="32.99" data-image="assets/img/image.png">ADICIONAR AO CARRINHO</a>
+                    <a href="#">ADICIONAR AO CARRINHO</a>
                 </div>
             </div>
         </div>
@@ -322,7 +242,6 @@
 
 
     <script type="text/javascript" src="assets/js/main.js"></script>
-    <script type="text/javascript" src="assets/js/cart.js"></script>
 </body>
 
 
